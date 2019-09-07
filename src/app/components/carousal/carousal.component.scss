@@ -1,0 +1,98 @@
+img{
+    width:100%;
+    max-height: 55vh;
+    min-height: 55vh;
+    opacity: 0.6;
+}
+
+video{
+    width:100%;
+    max-height: 55vh;
+    min-height: 55vh;
+    opacity: 0.6;
+}
+
+.parent-container{
+    display: -webkit-inline-box;
+    transition: 1000ms ease-in-out;
+    background-color: black;
+}
+
+#slide{
+    width: 100vw;
+}
+
+.layer{
+    // background-image: linear-gradient(to right, darkslategray , darkseagreen,darkslategray);
+    background-color: darkgray;
+    height: 55vh;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    opacity: 0.55;
+}
+
+.carousel-inner{
+    position: relative;
+}
+mdb-carousel-item{
+    top: 0;
+    position: absolute;
+    height: 55vh;
+    width: 100vw;
+    background-color: black;
+}
+
+
+mdb-carousel-item ::ng-deep .view{
+    width: 100%;
+    z-index: 9999999;
+}
+
+i{
+    font-size: 26px;
+    color: white;
+}
+
+::ng-deep ol{
+    display: none;
+}
+
+::ng-deep .carousel-caption{
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    .fadeInDown{
+        height: 100%;
+    }
+}
+
+::ng-deep .carousel-caption h3,p{
+    text-align: center;
+}
+
+::ng-deep .carousel-control-prev{
+    display: none !important;
+}
+
+::ng-deep .carousel-control-next{
+    display: none !important;
+}
+
+ol{
+    list-style: circle;
+    display: flex;
+    justify-content: center;
+    height: 55vh;
+}
+
+li{
+    font-size: 3em;
+    color: black;
+    border: 1px solid;
+}
+
+.carousel{
+    max-height: 55vh
+}

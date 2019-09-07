@@ -1,0 +1,31 @@
+<mdb-carousel class="carousel slide carousel-fade" [animation]="'slide'" [isControls]="true" #carousel>
+    <mdb-carousel-item *ngFor="let slide of slides">
+        <div class="view w-100" *ngIf="slide.type=='img'">
+            <img class="d-block w-100" src="{{slide.url}}" alt="First slide">
+        </div>
+        <video *ngIf="slide.type=='video'" class="video-fluid" autoplay loop preload="none">
+            <source src="{{slide.url}}" type="video/mp4" />
+        </video>
+        <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+        <div class="carousel-caption">
+            <div class="animated fadeInDown" fxLayout="column">
+                <div fxFlex class="h3-responsive" fxLayoutAlign="center end">
+                    <div class="white-color h26 regular" style="z-index: 99999">{{slide.label}}</div>
+                </div>
+                <div fxFlex fxLayoutAlign="center start">
+                    <a class="white-color h6 regular" href="{{slide.link}}" style="z-index: 99999">{{slide.label}}</a>
+                </div>
+            </div>
+        </div>
+    </mdb-carousel-item>
+</mdb-carousel>
+
+<div class="layer" fxLayout="row">
+    <div fxFlex=10 fxLayoutAlign="center center" (click)="previous()">
+        <i class="material-icons">keyboard_arrow_left</i>
+    </div>
+    <div fxFlex></div>
+    <div fxFlex=10 fxLayoutAlign="center center" (click)="next()">
+        <i class="material-icons">keyboard_arrow_right</i>
+    </div>
+</div>
