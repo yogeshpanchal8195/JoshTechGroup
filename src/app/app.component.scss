@@ -73,3 +73,58 @@ svg {
         border-radius: 8px;
     }
 }
+
+.remove{
+    transform: rotate(90deg)
+}
+
+.btn{
+    i{
+        font-size: 18px;
+    }
+}
+
+::ng-deep .mat-chip-list-wrapper{
+    float: left;
+}
+
+::ng-deep .mat-chip-list-wrapper .mat-standard-chip, .mat-chip-list-wrapper input.mat-input-element {
+    margin: 8px 12px !important;
+    background-color: darkcyan;
+    color: white;
+  font-family: Klavika-Regular
+}
+
+.footer{
+    background-color: black;
+    // height: 40px;
+    padding: 12px ;
+    margin-top: 18px;
+}
+
+.policies{
+    div{
+        font-size:15px;
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .rhs{
+        border-left: none;
+    }
+    .policies{
+        div{
+            font-size:12px;
+        }
+    }
+    ::ng-deep .mat-chip-list-wrapper .mat-standard-chip, .mat-chip-list-wrapper input.mat-input-element {
+        margin: 6px 8px !important;
+    }
+}
+.myPanelClass{
+    margin-top: 30px !important; 
+}
+
+::ng-deep .mat-option span{
+    padding-left: 12px
+}

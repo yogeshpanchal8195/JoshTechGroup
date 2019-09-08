@@ -32,6 +32,15 @@ $material-icons-font-path: '~material-icons/iconfont/';
   src: url('assets/fonts/Klavika-Regular.ttf'); /* IE9 Compat Modes */
 }
 
+
+.cdk-overlay-container{
+  position: absolute;
+  top: 70%;
+  left: 22%;
+  background-color: white;
+  box-shadow: 6px 5px 13px rgba(0,0,0,0.56);
+}
+
 .regular{
   font-family: Klavika-Regular
 }

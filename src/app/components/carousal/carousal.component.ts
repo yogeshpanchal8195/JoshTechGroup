@@ -16,8 +16,8 @@ export class CarousalComponent implements OnInit, AfterViewInit {
     {url:"https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg",type:"img",link:"",label:"Slide1"},
     {url:"https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg",type:"img",link:"",label:"Slide2"},
     {url:"https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg",type:"img",link:"",label:"Slide3"},
-    {url:"https://mdbootstrap.com/img/video/Tropical.mp4",type:"video",link:"",label:"Slide3"},
-    {url:"https://mdbootstrap.com/img/video/forest.mp4",type:"video",link:"",label:"Slide4"},
+    // {url:"https://mdbootstrap.com/img/video/Tropical.mp4",type:"video",link:"",label:"Slide3"},
+    // {url:"https://mdbootstrap.com/img/video/forest.mp4",type:"video",link:"",label:"Slide4"},
   ]
 
   constructor() { }
@@ -32,12 +32,8 @@ export class CarousalComponent implements OnInit, AfterViewInit {
         let playPromise=element.play();
         if (playPromise !== undefined) {
           playPromise.then(_ => {
-            // Automatic playback started!
-            // Show playing UI.
           })
           .catch(error => {
-            // Auto-play was prevented
-            // Show paused UI.
           });
         }
       }

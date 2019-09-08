@@ -1,16 +1,131 @@
-
-<div style="position: relative;height: 100%;">
-  <div #parent fxLayout="column">
-    <div *ngFor="let slide of slides ;let i=index" class="slidee" fxFlex fxFlexOffset="20px" [style.flex-direction]="(i%2==1)?'row-reverse':'row'">
-      <div *ngFor="let slideShow of slide;let j=index" fxLayout="column" fxFlex fxLayoutAlign="center center">
-        <img [src]="slideShow.url">
-        <div fxLayoutAlign="center center" #point class="point">
-          <span>*</span>
-        </div>
+<div class="parent">
+  <div class="carousal">
+    <app-carousal></app-carousal>
+  </div>
+  <div class="layer" fxLayout="row">
+    <div fxFlex>
+      <div class="white-color medium h20" ngClass.xs="h4">JOSH TECHNOLOGY GROUP</div>
+    </div>
+    <div fxFlex>
+      <div fxLayoutAlign="end end">
+        <div class="marginleft-24 white-color regular" ngClass.xs="h1">Play</div>
+        <div class="marginleft-24 white-color regular" ngClass.xs="h1">Explore</div>
+        <div class="marginleft-24 white-color regular" ngClass.xs="h1">Connect</div>
+        <div class="marginleft-24 white-color regular" ngClass.xs="h1">Apply</div>
       </div>
     </div>
   </div>
-  <svg width="width" height="height" #svg style="position:absolute;left:0;top:0" xmlns="http://www.w3.org/2000/svg">
-  </svg>
+
+  <div class="regular h20 align-center" ngClass.xs="h4" style="padding:  18px 12px">
+    Your Profile Comparision with
+    <span class="medium h20" ngClass.xs="h4">{{currUser.name}}</span>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column">
+    <div fxFlex=40 class="lhs" fxLayout="row" style="padding: 0 32px">
+      <div fxFlex=45 fxLayout="column">
+        <div class="h5 medium align-center header" ngClass.xs="h3">{{user.name}}</div>
+        <div *ngFor="let tag of user.tags;let i=index" class="loop" fxLayout="column" fxLayoutAlign="center center">
+          <div>
+            <img *ngIf="tag.name == 'Advisor'" src="/assets/img/advisor.svg"
+              style="background-color: hsl(152, 83%, 32%);">
+            <img *ngIf="tag.name == 'Connector'" src="/assets/img/connector.svg"
+              style="background-color: rgb(14, 81, 102)">
+            <img *ngIf="tag.name == 'Doer'" src="/assets/img/doer.svg" style="background-color: rgb(231, 151, 31)">
+            <img *ngIf="tag.name == 'Dreamer'" src="/assets/img/dreamer.svg"
+              style="background-color: rgb(136, 30, 185)">
+            <img *ngIf="tag.name == 'Organiser'" src="/assets/img/organizer.svg"
+              style="background-color: rgb(34, 32, 68)">
+            <img *ngIf="tag.name == 'Orignal'" src="/assets/img/original.svg" style="background-color:darkgrey">
+          </div>
+          <div class="medium h4" ngClass.xs="h3">
+            {{tag.name}}
+          </div>
+        </div>
+      </div>
+      <div fxFlex="10"></div>
+      <div fxFlex=45 fxLayout="column">
+        <div class="header" fxLayoutAlign="center start">
+          <!-- <mat-form-field fxFlex=70 class="combo h4 medium"> -->
+            <mat-select #select class="combo h4 medium" ngClass.xs="h3" (selectionChange)="selectionChanged($event)" [(value)]="currUser.value" [disableOptionCentering]=true panelClass="myPanelClass">
+              <mat-option *ngFor="let user of userList" [value]="user.value" class="h4 medium" ngClass.xs="h3">
+                {{user.label}}
+              </mat-option>
+            </mat-select>
+          <!-- </mat-form-field> -->
+        </div>
+        <div *ngFor="let tag of currUser.tags;let i=index" class="loop2" fxLayout="column"
+          fxLayoutAlign="center center">
+          <div>
+            <img *ngIf="tag.name == 'Advisor'" src="/assets/img/advisor.svg"
+              style="background-color: hsl(152, 83%, 32%);">
+            <img *ngIf="tag.name == 'Connector'" src="/assets/img/connector.svg"
+              style="background-color: rgb(14, 81, 102)">
+            <img *ngIf="tag.name == 'Doer'" src="/assets/img/doer.svg" style="background-color: rgb(231, 151, 31)">
+            <img *ngIf="tag.name == 'Dreamer'" src="/assets/img/dreamer.svg"
+              style="background-color: rgb(136, 30, 185)">
+            <img *ngIf="tag.name == 'Organiser'" src="/assets/img/organizer.svg"
+              style="background-color: rgb(34, 32, 68)">
+            <img *ngIf="tag.name == 'Orignal'" src="/assets/img/original.svg" style="background-color:darkgrey">
+          </div>
+          <div class="medium h4" ngClass.xs="h3">
+            {{tag.name}}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex class="rhs" style="padding: 0 32px" fxLayout="column">
+
+      <div fxLayout="column">
+        <div fxFlexOffset.xs="12px" fxLayoutAlign.xs="center center" *ngIf="user && user.tags && user.tags[0] && user.tags[0].name && currUser && currUser.tags && currUser.tags[0] && currUser.tags[0].name">
+          <span class="h20 medium" style="color:rgb(14, 81, 102) ">{{user?.tags[0]?.name}}</span>
+          <span class="h20 medium">&nbsp; + &nbsp;</span>
+          <span class="h20 medium" style="color:rgb(231, 151, 31)">{{currUser?.tags[0]?.name}}</span>
+        </div>
+        <div>
+          {{user.about}}
+        </div>
+        <div>
+          {{currUser.about}}
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="end end" fxFlexOffset="12px" class="btn">
+        <div fxLayout="row" (click)="addNewExpansion()">
+          <i class="material-icons">add</i>
+          <span class="h4 medium">
+            Add New
+          </span>
+        </div>
+        <i class="material-icons remove">remove</i>
+        <div fxLayout="row" (click)="OpenAll()">
+          <span class="h4 medium" [innerText]="!openAllContent ? 'Open All' :'Close All'">
+          </span>
+          <i class="material-icons">arrow_drop_down</i>
+        </div>
+      </div>
+      <mat-accordion #acc [multi]=true fxFlexOffset="12px">
+        <mat-expansion-panel *ngFor="let item of itemList;let i=index" [hideToggle]=true>
+          <mat-expansion-panel-header>
+            <span fxFlex class="h5 medium">
+              {{item.title}}
+            </span>
+            <i fxFlex="24px" class="material-icons" (click)="deleteExp(i)">highlight_off</i>
+          </mat-expansion-panel-header>
+          <mat-chip-list aria-label="Fish selection" *ngFor="let tag of item.tags">
+              <mat-chip color="primary" selected ngClass.xs="h3">{{tag}}</mat-chip>
+          </mat-chip-list>
+        </mat-expansion-panel>
+      </mat-accordion>
+
+    </div>
+  </div>
+
+  <div class="footer"  fxLayout="row" fxLayout.xs="column">
+    <div fxFlex fxLayout="row" class="policies">
+      <div fxFlex fxLayoutAlign="center center" class="white-color regular">Terms & Conditions</div>
+      <div fxFlex fxLayoutAlign="center center" class="white-color regular">Privacy Policy</div>
+      <div fxFlex fxLayoutAlign="center center" class="white-color regular">Contact Us</div>
+    </div>
+    <div fxLayoutAlign="center center" class="white-color medium h20" fxFlexOffset.xs="12px" ngClass.xs="h6" style="padding: 0 12px">Josh Technology Group</div>
+  </div>
 </div>
 

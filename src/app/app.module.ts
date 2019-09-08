@@ -11,8 +11,9 @@ import { CarousalComponent } from './components/carousal/carousal.component';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatExpansionModule} from '@angular/material/expansion';
+import {MatExpansionModule, MatExpansionPanel} from '@angular/material/expansion';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatChipsModule} from '@angular/material/chips';
 
 
 
@@ -23,6 +24,7 @@ import {MatStepperModule} from '@angular/material/stepper';
   ],
   imports: [
     MatStepperModule,
+    MatChipsModule,
     MatFormFieldModule,
     MatExpansionModule,
     BrowserModule,
@@ -34,6 +36,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatSelectModule,
     BrowserAnimationsModule
   ],
+  entryComponents:[MatExpansionPanel],
   providers: [HttpClient],
   bootstrap: [AppComponent]
 })
